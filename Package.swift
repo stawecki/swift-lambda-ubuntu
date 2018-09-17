@@ -14,12 +14,11 @@ var package = Package(
       .target(name: "Server", dependencies: ["Shared","Kitura","HeliumLogger"])
     ]
 )
-
+print("MACOS")
 #else
 // Ubuntu: Lambda build
 var package = Package(
     name: "Game",
-    exclude: ["Sources/Server"],
     dependencies: [
     ],
     targets: [
