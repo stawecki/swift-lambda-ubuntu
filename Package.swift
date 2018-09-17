@@ -11,6 +11,7 @@ var package = Package(
     ],
     targets: [
       .target(name: "Shared"),
+      .target(name: "Lambda", dependencies: ["Shared"]),
       .target(name: "Server", dependencies: ["Shared","Kitura","HeliumLogger"])
     ]
 )

@@ -1,27 +1,36 @@
 import Foundation
 import Shared
 
-//do {
-    let data = FileHandle.standardInput.readDataToEndOfFile()
+struct APIGatewayEvent: Codable {
+    let resource: String?
+    let path: String?
+    let httpMethod: String?
+    let queryStringParameters: [String:String]?
+}
 
-let inputString = String(data: data, encoding: .utf8)
+// Read Event data passed from the Shim (standard input)
+// When testing in the console, paste JSON data and press CTRL+D
+let eventData = FileHandle.standardInput.readDataToEndOfFile()
+let event = try? JSONDecoder().decode(APIGatewayEvent.self, from: eventData);
 
-// Make up some data
-let name = "Alex";
-let age = 30;
+// Read "queryStringParameters" from the event object and find "name".
+var name = "Unnamed";
+if (event != nil && event!.queryStringParameters != nil && event!.queryStringParameters!["name"] != nil) {
+    name = event!.queryStringParameters!["name"]!;
+}
+
+// Invoke shared code:
 let game = Game();
-let gameTest = game.test();
-let infoDictionary: [String : Any] = ["name":name,"age":age,"gt":gameTest,"input":inputString!];
+let player = game.generatePlayer(name: name);
 
-let jsonInfo = try? JSONSerialization.data(withJSONObject: infoDictionary, options: [])
+// Encode result:
+let jsonInfo = try? JSONEncoder().encode(player);
 let jsonInfoString = String(data:jsonInfo!, encoding: .utf8)
 
 // Create response data
 let responseDictionary: [String : Any] = ["statusCode":200, "headers":["Content-Type":"application/json"], "body": jsonInfoString!]
 let jsonData = try? JSONSerialization.data(withJSONObject: responseDictionary, options: [])
 
+// Write response to standard output. It will be read by the Shim.
 FileHandle.standardOutput.write(jsonData!)
 
-//} catch let error {
-//    print("%@", error)
-//}

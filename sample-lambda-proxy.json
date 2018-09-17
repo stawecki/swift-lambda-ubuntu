@@ -5,7 +5,7 @@
   "headers": null,
   "multiValueHeaders": null,
   "queryStringParameters": {
-    "param1": "value1"
+    "name": "GatewayTest"
   },
   "multiValueQueryStringParameters": {
     "param1": [
@@ -30,8 +30,7 @@
       "userAgent": "aws-internal/3 aws-sdk-java/1.11.398 Linux/4.9.119-0.1.ac.277.71.329.metal1.x86_64 OpenJDK_64-Bit_Server_VM/25.181-b13 java/1.8.0_181",
       "accountId": "00000000",
       "caller": "0000000",
-      "sourceIp": "test-invoke-source-ip",
-      "accessKey": "ASIARAAAAAAAAA",
+      "sourceIp": "test-invoke-sourcARAAAAAAAAA",
       "cognitoAuthenticationProvider": null,
       "user": "00000000"
     },

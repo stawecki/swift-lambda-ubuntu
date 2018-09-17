@@ -9,10 +9,10 @@ router.get("/ping") { request, response, next in
     next()
 }
 
-router.get("/test") { request, response, next in
+router.get("/player") { request, response, next in
     let game = Game();
-    let gameTest = game.test();
-    response.send(gameTest)
+    let player = game.generatePlayer(name: request.queryParameters["name"]);
+    response.send(json: player)
     next()
 }
 
