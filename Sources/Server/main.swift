@@ -16,7 +16,7 @@ router.get("/player") { request, response, next in
     next()
 }
 
-print("Running: http://localhost:8090/test")
+print("Running: http://localhost:8090/player")
 
 Kitura.addHTTPServer(onPort: 8090, with: router)
 Kitura.run()

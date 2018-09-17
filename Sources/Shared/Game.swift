@@ -1,5 +1,6 @@
 import Foundation
 
+
 public class GameCharacter: Encodable {
     public init() {
         name = "Unnamed"
@@ -12,18 +13,30 @@ public class GameCharacter: Encodable {
 }
 
 public class Game {
-    public init() {}
+    public init() {
+        #if os(Linux)
+        srandom(UInt32(time(nil)))
+        #endif
+    }
 
     public func generatePlayer(name: String?) -> GameCharacter {
         let player = GameCharacter()
         if (name != nil) {
             player.name = name!
         }
-        player.intelligence = Int( arc4random_uniform(100) )
-        player.charisma = Int( arc4random_uniform(100) )
-        player.strength = Int( arc4random_uniform(100) )
-        player.dexterity = Int( arc4random_uniform(100) )
+        player.intelligence = self.getRandomNum(20, 80)
+        player.charisma = self.getRandomNum(20, 80)
+        player.strength = self.getRandomNum(20, 80)
+        player.dexterity = self.getRandomNum(20, 80)
         return player
+    }
+
+    func getRandomNum(_ min: Int, _ max: Int) -> Int {
+        #if os(Linux)
+        return Int(random() % max) + min
+        #else
+        return Int(arc4random_uniform(UInt32(max)) + UInt32(min))
+        #endif
     }
 }
 
