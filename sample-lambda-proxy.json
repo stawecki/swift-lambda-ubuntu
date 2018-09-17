@@ -1,0 +1,45 @@
+{
+  "resource": "/test",
+  "path": "/test",
+  "httpMethod": "GET",
+  "headers": null,
+  "multiValueHeaders": null,
+  "queryStringParameters": {
+    "param1": "value1"
+  },
+  "multiValueQueryStringParameters": {
+    "param1": [
+      "value1"
+    ]
+  },
+  "pathParameters": null,
+  "stageVariables": null,
+  "requestContext": {
+    "path": "/test",
+    "accountId": "000000",
+    "resourceId": "szcgu3",
+    "stage": "test-invoke-stage",
+    "requestId": "7814623d-ba7d-11e8-8c8e-d983656b02d2",
+    "identity": {
+      "cognitoIdentityPoolId": null,
+      "cognitoIdentityId": null,
+      "apiKey": "test-invoke-api-key",
+      "cognitoAuthenticationType": null,
+      "userArn": "arn:aws:iam::0:",
+      "apiKeyId": "test-invoke-api-key-id",
+      "userAgent": "aws-internal/3 aws-sdk-java/1.11.398 Linux/4.9.119-0.1.ac.277.71.329.metal1.x86_64 OpenJDK_64-Bit_Server_VM/25.181-b13 java/1.8.0_181",
+      "accountId": "00000000",
+      "caller": "0000000",
+      "sourceIp": "test-invoke-source-ip",
+      "accessKey": "ASIARAAAAAAAAA",
+      "cognitoAuthenticationProvider": null,
+      "user": "00000000"
+    },
+    "resourcePath": "/test",
+    "httpMethod": "GET",
+    "extendedRequestId": "NXfJLEJjvHcFSzw=",
+    "apiId": "i1hhg17jsl"
+  },
+  "body": null,
+  "isBase64Encoded": false
+}
