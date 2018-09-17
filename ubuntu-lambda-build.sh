@@ -18,4 +18,5 @@ zip -r lambda.zip *
 
 cd ../..
 
-
+# Upload to AWS
+aws lambda update-function-code --function-name swift-test --zip-file fileb:///home/ubuntu/swift-lambda-ubuntu/.build/lambda/lambda.zip
